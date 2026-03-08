@@ -39,14 +39,6 @@ export default function CartPage() {
                         buttonText="Proceed to Shipping"
                         onButtonClick={handleCheckout}
                     />
-
-                    <div
-                        className="mt-6 flex items-center justify-center gap-2 text-stone-400 group cursor-pointer hover:text-stone-900 transition-colors"
-                        onClick={() => router.push("/")}
-                    >
-                        <ArrowRight className="w-4 h-4 rotate-180" />
-                        <span className="text-sm font-bold">Continue Shopping</span>
-                    </div>
                 </aside>
             </div>
         </div>
