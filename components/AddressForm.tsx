@@ -27,13 +27,13 @@ const InputField = ({
     onChange,
     error,
 }: InputFieldProps) => (
-    <div className="flex flex-col gap-2">
-        <label htmlFor={name} className="text-[13px] font-bold text-stone-700 uppercase tracking-wider ml-1">
+    <div className="flex flex-col gap-1.5 md:gap-2">
+        <label htmlFor={name} className="text-[11px] md:text-[13px] font-bold text-stone-700 uppercase tracking-wider ml-1">
             {label}
         </label>
         <div className={`relative group transition-all duration-300 ${error ? 'ring-2 ring-red-100' : 'focus-within:ring-4 focus-within:ring-green-50'}`}>
-            <div className={`absolute left-4 top-[14px] ${error ? 'text-red-400' : 'text-stone-400 group-focus-within:text-green-600'} transition-colors`}>
-                <Icon className="w-5 h-5" />
+            <div className={`absolute left-3.5 md:left-4 top-[12px] md:top-[14px] ${error ? 'text-red-400' : 'text-stone-400 group-focus-within:text-green-600'} transition-colors`}>
+                <Icon className="w-4 h-4 md:w-5 md:h-5" />
             </div>
             <input
                 id={name}
@@ -41,10 +41,10 @@ const InputField = ({
                 type={type}
                 value={value}
                 onChange={onChange}
-                className={`w-full pl-12 pr-4 py-3.5 rounded-xl border-2 bg-stone-50/30 text-stone-900 font-medium placeholder:text-stone-400 focus:outline-none transition-all ${error ? 'border-red-200 focus:border-red-400' : 'border-stone-100 focus:border-green-500'}`}
+                className={`w-full pl-10 md:pl-12 pr-4 py-3 md:py-3.5 rounded-xl border-2 bg-stone-50/30 text-stone-900 font-medium placeholder:text-stone-400 focus:outline-none transition-all text-sm md:text-base ${error ? 'border-red-200 focus:border-red-400' : 'border-stone-100 focus:border-green-500'}`}
                 placeholder={placeholder}
             />
-            {error && <span className="absolute -bottom-5 left-1 text-[11px] font-bold text-red-500 italic">{error}</span>}
+            {error && <span className="absolute -bottom-5 left-1 text-[10px] md:text-[11px] font-bold text-red-500 italic">{error}</span>}
         </div>
     </div>
 );
@@ -86,9 +86,7 @@ export function AddressForm() {
         let { name, value } = e.target;
 
         if (name === 'phone') {
-            // Remove any non-digit characters
             value = value.replace(/\D/g, '');
-            // Enforce 10 digit limit
             if (value.length > 10) value = value.slice(0, 10);
         }
 
@@ -109,9 +107,9 @@ export function AddressForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-8 pb-4">
-            <div className="flex flex-col gap-7">
-                {/* Row 1: Full Name */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 md:gap-8 pb-4">
+            <div className="flex flex-col gap-5 md:gap-7">
+                {/* Full Name */}
                 <div className="w-full">
                     <InputField
                         label="Full Name"
@@ -124,8 +122,8 @@ export function AddressForm() {
                     />
                 </div>
 
-                {/* Row 2: Email & Phone */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                {/* Email & Phone */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                     <InputField
                         label="Email Address"
                         name="email"
@@ -148,7 +146,7 @@ export function AddressForm() {
                     />
                 </div>
 
-                {/* Row 3: PIN Code */}
+                {/* PIN Code */}
                 <div className="w-full">
                     <InputField
                         label="PIN Code"
@@ -161,8 +159,8 @@ export function AddressForm() {
                     />
                 </div>
 
-                {/* Row 4: City & State */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                {/* City & State */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
                     <InputField
                         label="City"
                         name="city"
@@ -187,10 +185,10 @@ export function AddressForm() {
             <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-6 bg-stone-900 hover:bg-black text-white py-4 px-8 rounded-2xl font-black text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-stone-200 active:scale-[0.99] flex items-center justify-center min-h-[64px]"
+                className="mt-4 md:mt-6 bg-stone-900 hover:bg-black text-white py-3.5 md:py-4 px-6 md:px-8 rounded-2xl font-black text-base md:text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-stone-200 active:scale-[0.99] flex items-center justify-center min-h-[56px] md:min-h-[64px]"
             >
                 {isSubmitting ? (
-                    <div className="w-7 h-7 border-4 border-stone-600 border-t-white rounded-full animate-spin"></div>
+                    <div className="w-6 h-6 md:w-7 md:h-7 border-4 border-stone-600 border-t-white rounded-full animate-spin"></div>
                 ) : (
                     "Continue to Payment"
                 )}
